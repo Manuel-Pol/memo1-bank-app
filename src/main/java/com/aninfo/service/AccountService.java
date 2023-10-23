@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.Optional;
 
+
 @Service
 public class AccountService {
 
@@ -51,6 +52,17 @@ public class AccountService {
         return account;
     }
 
+    public Double applyPromo(Double amount){
+        if (amount >= 2000){
+            double plus = amount / 10;
+            if (plus > 500){
+                plus = (double) 500;
+            }
+            return amount + plus;
+        }
+        return amount;
+    }
+
     @Transactional
     public Account deposit(Long cbu, Double sum) {
 
@@ -58,8 +70,10 @@ public class AccountService {
             throw new DepositNegativeSumException("Cannot deposit negative sums");
         }
 
+        double final_amount = applyPromo(sum);
+
         Account account = accountRepository.findAccountByCbu(cbu);
-        account.setBalance(account.getBalance() + sum);
+        account.setBalance(account.getBalance() + final_amount);
         accountRepository.save(account);
 
         return account;
