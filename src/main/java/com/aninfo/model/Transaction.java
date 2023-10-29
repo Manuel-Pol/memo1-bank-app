@@ -33,35 +33,3 @@ public class Transaction {
         return id;
     }
 }
-
-
-
-
-
-
-
-
-// @Entity
-// public class Deposit extends Transaction{
-    
-//     public Deposit(){
-//     }
-
-//     public Deposit(Double amount, Long cbu){
-//         this.amount = amount;
-//         this.cbu = cbu;
-//     }
-// }
-
-
-// @Entity
-// public class Withdraw extends Transaction{
-    
-//     public Withdraw(){
-//     }
-
-//     public Withdraw(Double amount, Long cbu){
-//         this.amount = amount;
-//         this.cbu = cbu;
-//     }
-// }
